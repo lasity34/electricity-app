@@ -1,10 +1,3 @@
-//  Create all references
-//  Create function for buying electricity
-//  Create function for use=ing electricity
-//  Create function to clear local
-
-
-
 // DOM element(s) references
 
 const buy_btn = document.querySelector(".btn");
