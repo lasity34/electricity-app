@@ -48,7 +48,7 @@ function buy_electricity() {
     } else if (!electricity.advanceTaken()) {
         advance.classList.add("hidden")
     }
-    console.log(electricity.advanceTaken())
+
     localStorage.setItem("units_available", electricity.getUnitsAvailable());
     localStorage.setItem("units_bought", electricity.totalUnitsBought());
     localStorage.setItem("total_amount_spent", electricity.totalAmountSpent());

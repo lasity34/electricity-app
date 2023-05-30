@@ -77,7 +77,7 @@ function Electricity(unit, bought, spent) {
 
 
   function advanceTaken() {
-    if (0 < advance_balance) {
+    if (advance_balance > 30) {
       return true
     } else {
       return false

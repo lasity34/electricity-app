@@ -44,11 +44,9 @@ function buy_electricity() {
     total_amount_spent.innerHTML = `R${electricity.totalAmountSpent()}`;
 
     if (electricity.advanceTaken()) {
-        advance.classList.remove("hidden")
-    } else if (!electricity.advanceTaken()) {
-        advance.classList.add("hidden")
+        advance.classList.remove
     }
-    console.log(electricity.advanceTaken())
+
     localStorage.setItem("units_available", electricity.getUnitsAvailable());
     localStorage.setItem("units_bought", electricity.totalUnitsBought());
     localStorage.setItem("total_amount_spent", electricity.totalAmountSpent());
