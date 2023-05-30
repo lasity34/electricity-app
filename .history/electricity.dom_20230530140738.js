@@ -10,9 +10,9 @@ const total_amount_spent = document.querySelector(".totalAmount");
 
 
 
-const units_available_local = parseFloat(localStorage.getItem("units_available")) || 0;
-const units_bought_local = parseFloat(localStorage.getItem("units_bought")) || 0;
-const total_amount_spent_local = parseFloat(localStorage.getItem("total_amount_spent")) || 0;
+const units_available_local = localStorage.getItem("units_available");
+const units_bought_local = localStorage.getItem("units_bought");
+const total_amount_spent_local = localStorage.getItem("total_amount_spent");
 
 if (units_available_local) {
     units_available_display.innerHTML = units_available_local;

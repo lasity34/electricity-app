@@ -8,25 +8,12 @@ const total_amount_spent = document.querySelector(".totalAmount");
 // Factory Function instance
 
 
+const units_available_local = localStorage.getItem("units_available") || electricity.getUnitsAvailable();
+  const units_bought_local = localStorage.getItem("units_bought");
+  const total_amount_spent_local = localStorage.getItem("total_amount_spent");
+console.log(units_available_local)
 
-
-const units_available_local = parseFloat(localStorage.getItem("units_available")) || 0;
-const units_bought_local = parseFloat(localStorage.getItem("units_bought")) || 0;
-const total_amount_spent_local = parseFloat(localStorage.getItem("total_amount_spent")) || 0;
-
-if (units_available_local) {
-    units_available_display.innerHTML = units_available_local;
-  }
-  
-  if (units_bought_local) {
-    units_bought.innerHTML = units_bought_local;
-  }
-  
-  if (total_amount_spent_local) {
-    total_amount_spent.innerHTML = `R${total_amount_spent_local}`;
-  }
-  
-  const electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
+const electricity = Electricity();
 
 // DOM events here
 function buy_electricity() {
@@ -35,10 +22,9 @@ function buy_electricity() {
   );
   if (top_up_select) {
     const selectedValue = top_up_select.value;
-    let amount =
-      selectedValue === "advance" ? selectedValue : parseFloat(selectedValue);
+    let amount = selectedValue === 'advance' ? selectedValue : parseFloat(selectedValue)
     electricity.topUpElectricity(amount);
-    units_available_display.innerHTML = electricity.getUnitsAvailable();
+    units_available_display.innerHTML = units_available_local
     units_bought.innerHTML = electricity.totalUnitsBought();
     total_amount_spent.innerHTML = `R${electricity.totalAmountSpent()}`;
 
@@ -55,9 +41,9 @@ function use_electricity() {
 
   if (appliance_select) {
     const selectedValue = appliance_select.value;
-
+ 
     electricity.useAppliance(selectedValue);
-    units_available_display.innerHTML = electricity.getUnitsAvailable();
+    units_available_display.innerHTML = units_available_local
     localStorage.setItem("units_available", electricity.getUnitsAvailable());
   }
 }
