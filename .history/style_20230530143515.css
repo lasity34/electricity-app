@@ -57,14 +57,10 @@ button {
 	}
 }
 
-.clear_container {
-	display: flex;
-	justify-content: center;
-}
 
 .styled-button {
 	background-color: #4CAF50; /* Green */
-	
+	margin: 0 auto;
 	border: none;
 	color: white;
 	padding: 15px 32px;

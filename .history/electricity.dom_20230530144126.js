@@ -28,7 +28,7 @@ if (units_available_local) {
     total_amount_spent.innerHTML = `R${total_amount_spent_local}`;
   }
   
-  let electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
+  const electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
 
 // DOM events here
 function buy_electricity() {
@@ -72,18 +72,12 @@ function use_electricity() {
 }
 
 function next_month_bill() {
-    units_available_display.innerHTML = 0;
-    units_bought.innerHTML = 0;
-    total_amount_spent.innerHTML = 0;
     units_available_local = 0;
-    units_bought_local = 0;
-    total_amount_spent_local = 0;
-    localStorage.clear();
+total_amount_spent_local = 0;
+units_bought_local = 0
+ localStorage.clear()
 
-   
-    electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
 }
-
 
 buy_btn.addEventListener("click", buy_electricity);
 use_electricity_btn.addEventListener("click", use_electricity);

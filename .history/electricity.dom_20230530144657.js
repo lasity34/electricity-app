@@ -28,7 +28,7 @@ if (units_available_local) {
     total_amount_spent.innerHTML = `R${total_amount_spent_local}`;
   }
   
-  let electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
+  const electricity = Electricity(units_available_local, units_bought_local, total_amount_spent_local);
 
 // DOM events here
 function buy_electricity() {
