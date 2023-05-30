@@ -1,7 +1,7 @@
 // DOM element(s) references
 
 const buy_btn = document.querySelector(".btn");
-const use_electricity_btn =document.querySelector(".useNow")
+const use_electricity_display =document.querySelector(".useNow")
 const units_available_display = document.querySelector(".unitsAvailable");
 const units_bought = document.querySelector(".totalUnits")
 const total_amount_spent = document.querySelector(".totalAmount")
@@ -28,9 +28,9 @@ const appliance_select =  document.querySelector('input[name="useElectricity"]:c
        console.log(selectedValue)
        electricity.useAppliance(selectedValue)
        units_available_display.innerHTML = electricity.getUnitsAvailable()
-       total_amount_spent.innerHTML = `R${electricity.totalAmountSpent()}`
+       total_amount_spent.innerHTML = electricity.totalAmountSpent()
     }
 }
 
 buy_btn.addEventListener("click", buy_electricity);
-use_electricity_btn.addEventListener("click", use_electricity)
+units_available_display.addEventListener("click", use_electricity)

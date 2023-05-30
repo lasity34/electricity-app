@@ -10,7 +10,7 @@ function Electricity() {
   let advance = false;
   let advance_balance = 0;
   let total_amount_spent = 0
-  let total_units_bought = 0
+  let total_units_spent = 0
   // do we want to go with this or array?
   let appliances = {
     Stove: 10,
@@ -20,7 +20,6 @@ function Electricity() {
   };
 
   function topUpElectricity(amount) {
-    let unitsBought = 0;
     if (typeof amount === "number") {
       if (advance) {
         if (amount >= advance_balance) {
@@ -34,23 +33,21 @@ function Electricity() {
       }
 
       if (amount === 10) {
-        unitsBought = 7;
+        unitsAvailable += 7;
       } else if (amount === 20) {
-        unitsBought = 14;
+        unitsAvailable += 14;
       } else if (amount === 50) {
-        unitsBought = 35;
+        unitsAvailable += 35;
       }
     } else if (amount === "advance" && !advance && advance_balance === 0) {
-      unitsBought = 21;
+      unitsAvailable += 21;
       advance_balance = 30;
       advance = true;
     }
 
-    unitsAvailable += unitsBought;
-    total_units_bought += unitsBought;
-    total_amount_spent += amount;
-}
-
+    
+    total_amount_spent += amount
+  }
 
   function getUnitsAvailable() {
     return unitsAvailable;
@@ -63,10 +60,10 @@ function Electricity() {
   function useAppliance(appliance) {
     if (appliances[appliance] <= unitsAvailable) {
       unitsAvailable -= appliances[appliance];
-      
+      total_units_spent += appliances[appliance]; // add the units used by the appliance to total_units_spent
       return true;
     } else {
-      return false; 
+      return false; // return false when there are not enough units
     }
 }
 
@@ -80,7 +77,7 @@ function Electricity() {
   }
 
   function totalUnitsBought() {
-    return total_units_bought
+    return total_units_spent
   }
 
   return {

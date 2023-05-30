@@ -28,7 +28,7 @@ const appliance_select =  document.querySelector('input[name="useElectricity"]:c
        console.log(selectedValue)
        electricity.useAppliance(selectedValue)
        units_available_display.innerHTML = electricity.getUnitsAvailable()
-       total_amount_spent.innerHTML = `R${electricity.totalAmountSpent()}`
+       total_amount_spent.innerHTML = electricity.totalAmountSpent()
     }
 }
 

@@ -8,9 +8,7 @@
 function Electricity() {
   let unitsAvailable = 0;
   let advance = false;
-  let advance_balance = 0;
-  let total_amount_spent = 0
-  let total_units_bought = 0
+  let total_amount = 0
   // do we want to go with this or array?
   let appliances = {
     Stove: 10,
@@ -20,37 +18,31 @@ function Electricity() {
   };
 
   function topUpElectricity(amount) {
-    let unitsBought = 0;
-    if (typeof amount === "number") {
-      if (advance) {
-        if (amount >= advance_balance) {
-          amount -= advance_balance;
-          advance_balance = 0;
-          advance = false;
-        } else {
-          advance_balance -= amount;
-          return;
-        }
-      }
-
-      if (amount === 10) {
-        unitsBought = 7;
-      } else if (amount === 20) {
-        unitsBought = 14;
-      } else if (amount === 50) {
-        unitsBought = 35;
-      }
-    } else if (amount === "advance" && !advance && advance_balance === 0) {
-      unitsBought = 21;
-      advance_balance = 30;
-      advance = true;
+   
+    if (amount === 10) {
+      unitsAvailable += 7;
+      total_amount += amount
+    } else if (amount === 20) {
+      unitsAvailable += 14;
+      total_amount += amount
+    } else if (amount === 50) {
+      unitsAvailable += 35;
+      total_amount += amount
     }
 
-    unitsAvailable += unitsBought;
-    total_units_bought += unitsBought;
-    total_amount_spent += amount;
-}
+    if (total_amount > 30) {
+      advance = false
+    }
 
+    if (amount === "advance" && !advance) {
+        unitsAvailable += 21;
+        advance = true;
+      } else if (advance && total_amount > 21) {
+        
+        unitsAvailable -= 21;
+        advance = false;
+      }
+  }
 
   function getUnitsAvailable() {
     return unitsAvailable;
@@ -61,27 +53,20 @@ function Electricity() {
    * other wise return false and do nothing.
    */
   function useAppliance(appliance) {
-    if (appliances[appliance] <= unitsAvailable) {
+    if ([appliances[appliance]]) {
       unitsAvailable -= appliances[appliance];
-      
-      return true;
-    } else {
-      return false; 
     }
-}
-
+  }
 
   function advanceTaken() {
     return advance;
   }
 
   function totalAmountSpent() {
-    return total_amount_spent
+    return total_amount
   }
 
-  function totalUnitsBought() {
-    return total_units_bought
-  }
+  function totalUnitsBought() {}
 
   return {
     advanceTaken,
