@@ -33,26 +33,22 @@ function Electricity() {
         }
       }
 
-      if (Number(amount) === 10) {
+      if (amount === 10) {
         unitsBought = 7;
-      } else if (Number(amount) === 20) {
+      } else if (amount === 20) {
         unitsBought = 14;
-      } else if (Number(amount) === 50) {
+      } else if (amount === 50) {
         unitsBought = 35;
       }
-
-      unitsAvailable += unitsBought;
-      total_units_bought += unitsBought;
       total_amount_spent += amount;
     } else if (amount === "advance" && !advance && advance_balance === 0) {
       unitsBought = 21;
       advance_balance = 30;
       advance = true;
-      unitsAvailable += unitsBought;
-      total_units_bought += unitsBought;
     }
 
-    
+    unitsAvailable += unitsBought;
+    total_units_bought += unitsBought;
 
 }
 

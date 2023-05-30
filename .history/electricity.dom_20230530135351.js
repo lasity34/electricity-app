@@ -8,11 +8,6 @@ const total_amount_spent = document.querySelector(".totalAmount");
 // Factory Function instance
 
 
-const units_available_local = localStorage.getItem("units_available");
-  const units_bought_local = localStorage.getItem("units_bought");
-  const total_amount_spent_local = localStorage.getItem("total_amount_spent");
-
-
 const electricity = Electricity();
 
 // DOM events here
